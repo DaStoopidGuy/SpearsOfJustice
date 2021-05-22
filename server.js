@@ -12,7 +12,7 @@ mongoose.connect(mongoURI, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,
-})
+})                                                            // returns a promise
     .then(() => console.log("MONOGDB DATABASE CONNECTED!"))
     .catch((err) => console.log(err))
 
