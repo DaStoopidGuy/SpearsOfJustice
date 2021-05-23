@@ -1,5 +1,5 @@
-# SpearsOfJustice
-
+# **_SpearsOfJustice_**
+**_Its like a blog but but private (atleast its supposed to be...)_**
 ## Development server
 To run both the client and server (Run this in the parent directory or else it will just run the client) :
 ```
