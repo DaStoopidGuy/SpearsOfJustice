@@ -8,5 +8,5 @@
 <h1>Login</h1>
 
 <!-- CSS -->
-<style>
+<style lang="scss">
 </style>

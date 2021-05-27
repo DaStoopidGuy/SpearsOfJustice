@@ -8,5 +8,5 @@
 <h1>Aaah SHIT! here we go again....</h1>
 
 <!-- CSS -->
-<style>
+<style lang="scss">
 </style>
