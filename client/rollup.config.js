@@ -46,9 +46,9 @@ export default {
 				dev: !production
 			}
 		}),
-		dev({
-			proxy: { "/api": "http://localhost:3000/" }
-		}),
+		// dev({
+		// 	proxy: { "/api/*": "http://localhost:3000/" }
+		// }),
 		// we'll extract any component CSS out into
 		// a separate file - better for performance
 		css({ output: 'bundle.css' }),
