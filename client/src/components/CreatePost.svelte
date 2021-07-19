@@ -75,5 +75,6 @@
         &:hover {
             background-color: rgb(61, 61, 61);
         }
+        min-width: 20px;
     }
 </style>
