@@ -11,7 +11,7 @@
     async function savePost() {
         let post = { title: titleVar, body: bodyVar };
         const response = await axios.post(
-            "http://localhost:3000/api/posts",
+            "/api/posts",
             post
         );
         posts.update((value) => [response.data, ...value]);
@@ -72,6 +72,7 @@
         color: white;
         border: 2px solid rgb(117, 117, 117);
         margin: 0.25rem 20rem;
+        min-width: 40px;
         &:hover {
             background-color: rgb(61, 61, 61);
         }

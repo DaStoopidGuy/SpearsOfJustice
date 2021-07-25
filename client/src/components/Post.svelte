@@ -2,6 +2,8 @@
 <script>
     export let post;
     export let deletePost;
+    
+    post.body
 </script>
 
 <!-- HTML -->
