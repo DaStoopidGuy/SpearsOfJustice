@@ -56,6 +56,7 @@ router.post("/register", async (req, res) =>{
 
 })
 
+
 // LOGIN route
 router.post("/login", async (req, res) => {
     try {
@@ -77,7 +78,7 @@ router.post("/login", async (req, res) => {
 
         // Check if password is incorrect
         if (!isPassCorrect)
-        res.status(400).json({message: "Username or Password are incorrect"});
+        return res.status(400).json({message: "Username or Password are incorrect"});
 
         // Create token
         const token = jwt.sign({id: foundUser._id}, jwtSECRET)
