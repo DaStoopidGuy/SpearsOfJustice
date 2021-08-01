@@ -17,6 +17,7 @@
         posts.update((value) => [response.data, ...value]);
         titleVar = "";
         bodyVar = "";
+        
     }
 </script>
 

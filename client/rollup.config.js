@@ -66,6 +66,7 @@ export default {
 
 		// In dev mode, call `npm run start` once
 		// the bundle has been generated
+
 		!production && dev({
 			dirs: ['public'],
 			port: 5000,

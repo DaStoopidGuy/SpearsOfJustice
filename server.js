@@ -7,6 +7,7 @@ const morgan = require("morgan")
 
 const { port, mongoURI } = require("./config.js")
 const postsRoutes = require("./routes/posts")
+const authRoutes = require("./routes/auth")
 
 const app = express()   // Express instance
 app.use(cors())
@@ -20,11 +21,13 @@ mongoose.connect(mongoURI, {
     useUnifiedTopology: true,
 })                                                            // returns a promise
     .then(() => console.log("MONOGDB DATABASE CONNECTED!"))
-    .catch((err) => console.log(err))
+    .catch((err) => console.log(`MONGODB ERROR: ${err}`))
 
-app.use("/api/posts", postsRoutes)
+// Routes
+app.use("/api/posts", postsRoutes)  //post route
+app.use("/api/auth", authRoutes)    //auth route
 
 app.get("/", (req, res) => {
     res.send("Homepage...")
 })
-app.listen(port, () => { console.log("Express server is running!") })
+app.listen(port, () => { console.log(`Express server is running at ${port}!`) })
