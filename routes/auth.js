@@ -3,7 +3,6 @@ const { Router } = require("express")
 const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
 const { jwtSECRET } = require("../config")
-const { token } = require("morgan")
 
 const router = Router()
 
