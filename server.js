@@ -11,7 +11,7 @@ const postsRoutes = require("./routes/posts")
 
 
 const app = express()   // Express instance
-// Adding middlewares
+// Adding middleware
 app.use(cors())
 app.use(express.json())
 app.use(morgan("tiny"))
