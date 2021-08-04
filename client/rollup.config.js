@@ -5,6 +5,7 @@ import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
 import css from 'rollup-plugin-css-only';
 import sveltePreprocess from 'svelte-preprocess';
+import dev from 'rollup-plugin-dev';
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -45,6 +46,9 @@ export default {
 				dev: !production
 			}
 		}),
+		// dev({
+		// 	proxy: { "/api/*": "http://localhost:3000/" }
+		// }),
 		// we'll extract any component CSS out into
 		// a separate file - better for performance
 		css({ output: 'bundle.css' }),
@@ -62,7 +66,15 @@ export default {
 
 		// In dev mode, call `npm run start` once
 		// the bundle has been generated
-		!production && serve(),
+
+		!production && dev({
+			dirs: ['public'],
+			port: 5000,
+			proxy: {"/api/*": "http://localhost:3000/api/"},
+			spa: true,
+		}),
+
+		// !production && serve(),
 
 		// Watch the `public` directory and refresh the
 		// browser on changes when not in production

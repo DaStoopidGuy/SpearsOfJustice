@@ -1,5 +1,6 @@
 const { Router } = require("express")
 const Post = require("../models/Post")
+const auth = require("../middleware/auth")
 
 const router = Router()
 

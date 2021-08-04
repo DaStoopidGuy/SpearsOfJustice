@@ -8,5 +8,5 @@
 <h1>Register</h1>
 
 <!-- CSS -->
-<style>
+<style lang="scss">
 </style>
