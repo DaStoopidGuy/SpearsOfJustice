@@ -1,11 +1,11 @@
 // Imports
+require("dotenv").config() //To use .env files
 const express = require("express")
 const path = require("path")
 const mongoose = require("mongoose")
 const cors = require("cors")
 const morgan = require("morgan")
 const cookieParser = require("cookie-parser")
-
 const { port, mongoURI } = require("./config.js")
 const postsRoutes = require("./routes/posts")
 
@@ -18,7 +18,7 @@ app.use(morgan("tiny"))
 app.use(cookieParser)
 
 // Connecting to MongoDb database
-mongoose.connect(mongoURI, {
+mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,
