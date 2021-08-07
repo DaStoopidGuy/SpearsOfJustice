@@ -5,7 +5,7 @@ const auth = require("../middleware/auth")
 const router = Router()
 
 // Get Posts
-router.get("/", async (req, res) => {
+router.get("/", auth, async (req, res) => {
     try {
         const posts = await Post.find()
         if (!posts) {
@@ -18,7 +18,7 @@ router.get("/", async (req, res) => {
 })
 
 // Create new posts
-router.post("/", async (req, res) => {
+router.post("/", auth, async (req, res) => {
     const { title, body } = req.body
     const newPost = new Post({ title, body })
     try {
@@ -33,7 +33,7 @@ router.post("/", async (req, res) => {
 })
 
 // Delete posts
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", auth, async (req, res) => {
     const { id } = req.params
     try {
         const post = await Post.findById(id)

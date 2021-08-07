@@ -27,7 +27,7 @@ router.post("/", async (req, res) => {
         return res.status(400).json({message: "Username or Password are incorrect"});
 
         // Create token
-        const token = await jwt.sign({id: foundUser._id}, jwtSECRET)
+        const token = await jwt.sign({user_id: foundUser._id}, jwtSECRET)
 
         // Create cookie
         return res.status(200).cookie("token", token, {httpOnly: true}).json({message: "User logged in"})

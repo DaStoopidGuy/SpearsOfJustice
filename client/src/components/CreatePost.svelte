@@ -11,7 +11,7 @@
     async function savePost() {
         let post = { title: titleVar, body: bodyVar };
         const response = await axios.post(
-            "http://localhost:3000/api/posts",
+            "/api/posts",
             post
         );
         posts.update((value) => [response.data, ...value]);

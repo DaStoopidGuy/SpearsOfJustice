@@ -8,14 +8,14 @@
     import { posts } from "../stores";
 
     onMount(async () => {
-        const promise = await axios.get("http://localhost:3000/api/posts/");
+        const promise = await axios.get("/api/posts/");
         posts.set(promise.data);
     });
 
     // Delete Post
     async function deletePost(post) {
         let response = await axios.delete(
-            "http://localhost:3000/api/posts/" + post._id
+            "/api/posts/" + post._id
         );
         if (response.data.id === post._id) {
             posts.update((value) => value.filter((p) => p._id !== post._id));
