@@ -2,15 +2,22 @@
 <script>
     import { onMount } from "svelte";
     import axios from "axios";
+    axios.defaults.withCredentials = true;
     import Navbar from "../components/Navbar.svelte";
     import Post from "../components/Post.svelte";
     import CreatePost from "../components/CreatePost.svelte";
-    import { posts } from "../stores";
+    import { posts, authenticated } from "../stores";
 
     onMount(async () => {
         const promise = await axios.get("/api/posts/");
         posts.set(promise.data);
+
+        if (promise.status !== 401)
+        {
+            authenticated.set(true)
+        }
     });
+    console.log($posts)
 
     // Delete Post
     async function deletePost(post) {

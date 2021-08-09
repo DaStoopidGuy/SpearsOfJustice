@@ -1,4 +1,5 @@
 const { Schema, model } = require("mongoose")
+const User = require("./User")
 
 const PostSchema = new Schema({
     title: {
@@ -15,6 +16,10 @@ const PostSchema = new Schema({
         type: String,
         required: false,
     },
+    author: {
+        type: String,
+        required: true
+    }
 })
 
 const Post = model("post", PostSchema)

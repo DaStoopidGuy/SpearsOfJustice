@@ -1,17 +1,24 @@
 <!-- JavaScript -->
 <script>
     import axios from "axios";
+    axios.defaults.withCredentials = true;
     import Navbar from "../components/Navbar.svelte";
+    import { authenticated } from "../stores";
 
     let username, password, verifyPassword;
 
     async function handleLogin()
     {
-        const crendentials = {username: username, password: password, passwordVerify: verifyPassword};
-        const response = await axios.post("http://localhost:3000/api/auth/register", crendentials)
+        const crendentials = {username: username, password: password};
+        const response = await axios.post("/api/login", crendentials)
         username = ""
         password = ""
         verifyPassword = ""
+
+        if (response.status === 200) {
+            authenticated.set(true)
+            window.location.href = "#/"
+        }
     }
 </script>
 
@@ -25,8 +32,6 @@
         <label >Password:</label>
         <input type="password" bind:value={password}>
         <br>
-        <label >Verify Password:</label>
-        <input type="password" bind:value={verifyPassword}>
         <button on:click={handleLogin}>Login</button>
     </div>
 </div>

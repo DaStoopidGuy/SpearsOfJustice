@@ -20,7 +20,7 @@ router.get("/", auth, async (req, res) => {
 // Create new posts
 router.post("/", auth, async (req, res) => {
     const { title, body } = req.body
-    const newPost = new Post({ title, body })
+    const newPost = new Post({ title, body, author: req.user_id })
     try {
         const post = await newPost.save()
         if (!post) {
@@ -40,9 +40,12 @@ router.delete("/:id", auth, async (req, res) => {
         if (!post) {
             throw new Error("No post was found")
         }
-        const removed = await post.delete()
-        if (!removed) {
-            throw new Error("There was a problem deleting the post")
+
+        if (post.author === req.user_id) {
+            const removed = await post.delete()
+            if (!removed) {
+                throw new Error("There was a problem deleting the post")
+            }
         }
         res.status(200).json({ id })
     } catch (error) {
