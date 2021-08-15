@@ -33,12 +33,18 @@
 <!-- HTML -->
 <div class="homepage">
     <Navbar />
+    {#if $authenticated}
     <CreatePost {$posts} />
     <div class="posts">
         {#each $posts as post}
-            <Post {post} {deletePost} />
+        <Post {post} {deletePost} />
         {/each}
     </div>
+    {:else if !$authenticated}
+    <div class="unauthenticated">
+        <h1>Not Authenticated!</h1>
+    </div>
+    {/if}
 </div>
 
 <!-- CSS -->
@@ -47,5 +53,16 @@
         background-color: #1e1e1e;
         color: white;
         min-height: 100vh;
+    }
+    .unauthenticated {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 94vh;
+        h1 {
+            position: relative;
+            transform: translateY(-260%);
+            color: red;
+        }
     }
 </style>
