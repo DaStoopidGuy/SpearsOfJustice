@@ -36,7 +36,7 @@ app.use("/api/logout", require("./routes/auth/logout"))    //logout route
 
 if (process.env.PRODUCTION == "true") {
     app.use(express.static("client/public"))
-    app.get("/", (req, res) => {
+    app.get("*", (req, res) => {
         return res.sendFile(path.resolve(__dirname, "client", "public", "index.html"))
     })
 }
